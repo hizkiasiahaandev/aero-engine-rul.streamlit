@@ -10,7 +10,7 @@ st.set_page_config(page_title="RUL Dashboard", layout="wide")
 
 @st.cache_resource
 def load_assets():
-    model = tf.keras.models.load_model('models/lstm_model.keras')
+    model = tf.keras.models.load_model('models/lstm_model.h5')
     scaler = load('models/scaler.pkl')
     return model, scaler
 
