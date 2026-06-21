@@ -49,8 +49,8 @@ early_stop = tf.keras.callbacks.EarlyStopping(
 
 history = model.fit(
     X_train, y_train, 
-    epochs=50, 
-    batch_size=64, 
+    epochs=64, 
+    batch_size=100, 
     validation_split=0.2,
     callbacks=[early_stop],
     verbose=1

@@ -10,7 +10,7 @@ st.set_page_config(page_title="RUL Dashboard", layout="wide")
 
 @st.cache_resource
 def load_assets():
-    model = tf.keras.models.load_model('models/lstm_model.h5')
+    model = tf.keras.models.load_model('models/lstm_model.keras')
     scaler = load('models/scaler.pkl')
     return model, scaler
 
@@ -78,7 +78,8 @@ else:
 
     st.divider()
     
-    tab1, tab2, tab3 = st.tabs(["📊 Raw Data", "📈 Training History (Real)", "📜 Laporan Performa"])
+  # Ubah baris ini:
+    tab1, tab2, tab3 = st.tabs(["📊 Data Normalized", "📈 Training History (Real)", "📜 Laporan Performa"])
     
     with tab1:
         st.subheader("Data Sensor Terakhir (Normalized)")
@@ -111,13 +112,13 @@ else:
         else:
             st.error("File history training tidak ditemukan. Jalankan step4_modeling.py terlebih dahulu.")
         
-    with tab3:
-        st.markdown(f"""
-        ### Statistik Evaluasi Akhir (Data Test NASA FD001)
-        * **Mean Absolute Error (MAE):** 11.61
-        * **Root Mean Squared Error (RMSE):** 16.72
-        * **Input Sequence:** 50 Cycles
-        * **Normalization:** MinMaxScaler (0-1)
-        * **Dataset:** NASA C-MAPSS Sub-dataset FD001
-        """)
-        st.info("Keterangan: Angka ini didasarkan pada pengujian terhadap 100 unit mesin yang belum pernah dilihat model sebelumnya.")
+        with tab3:
+            st.markdown(f"""
+    ### Statistik Evaluasi Akhir (Data Test NASA FD001)
+    * **Mean Absolute Error (MAE):** 10.64
+    * **Root Mean Squared Error (RMSE):** 14.78
+    * **Input Sequence:** 50 Cycles
+    * **Normalization:** MinMaxScaler (0-1)
+    * **Dataset:** NASA C-MAPSS Sub-dataset FD001
+    """)
+    st.info("Keterangan: Angka ini didasarkan pada pengujian terhadap 100 unit mesin yang belum pernah dilihat model sebelumnya.")

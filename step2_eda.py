@@ -6,6 +6,7 @@ train = pd.read_csv('Datasets/CMaps/train_FD001.txt', sep='\s+', header=None, na
 
 stats = train.describe().T
 constant_sensors = stats[stats['std'] == 0].index.tolist()
+print("Nilai unik s6:", train['s6'].unique())
 print(f"Sensor yang akan dihapus (konstan): {constant_sensors}")
 
 sensors_to_plot = ['s2', 's3', 's4', 's7', 's11', 's12', 's15', 's17', 's20', 's21']

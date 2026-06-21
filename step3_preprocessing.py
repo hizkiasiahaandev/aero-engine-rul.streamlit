@@ -8,7 +8,7 @@ train = pd.read_csv('Datasets/CMaps/train_FD001.txt', sep=r'\s+', header=None, n
 def add_rul(df):
     max_cycle = df.groupby('id')['cycle'].transform('max')
     df['RUL'] = max_cycle - df['cycle']
-    df['RUL'] = df['RUL'].clip(upper=125)
+    df['RUL'] = df['RUL'].clip(upper=130)
     return df
 
 train = add_rul(train)

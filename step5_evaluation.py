@@ -34,7 +34,7 @@ y_pred = model.predict(X_test)
 
 # Penambahan Clipping: Karena pas training RUL dibatasi 125, 
 # maka prediksi gak boleh minus atau lebih dari 125 agar logis.
-y_pred = np.clip(y_pred, 0, 125)
+y_pred = np.clip(y_pred, 0, 130)
 y_true = true_rul['RUL'].values
 
 rmse = math.sqrt(mean_squared_error(y_true, y_pred))
